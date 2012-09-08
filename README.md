@@ -18,4 +18,4 @@ This framework depends on a port of node [here](https://github.com/paddybyers/no
 
 ## More information
 
-Please see the [wiki](https://github.com/paddybyers/anode/wiki/Anode) for more information.
+Please see the [wiki](https://github.com/paddybyers/anode/wiki) for more information.
