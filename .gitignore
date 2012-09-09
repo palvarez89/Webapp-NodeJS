@@ -9,20 +9,17 @@
 *.class
 
 # generated files
-app/bin/
-app/gen/
+WebappNode/bin/
+WebappNode/gen/
 libnode/gen/
 libnode/bin/
 bridge-java/bin/
 bridge-stub-generator/bin/
 
-# shared libraries
-app/assets/
 
 # Local configuration file (sdk path, etc)
-app/local.properties
-app/project.properties
+WebappNode/local.properties
+WebappNode/project.properties
 
 # ndk-build files
-libs/
 obj/
