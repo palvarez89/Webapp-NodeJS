@@ -35,6 +35,13 @@ final class RuntimeNative {
 	private static String RUNTIME_LIBRARY = "libjninode.so";
 	private static String BRIDGE_LIBRARY = "bridge.node";
 	
+	//ServerFiles
+	private static String SRV_FILE_MAINJS = "main.js";
+	private static String SRV_FILE_ROUTERJS = "router.js";
+	private static String SRV_FILE_SERVERJS = "server.js";
+	private static String SRV_FILE_REQUESTHANDLERSJS = "requestHandlers.js";
+	//---------
+	
 	static final int SIGINT  = 2;
 	static final int SIGABRT = 6;
 	static final int SIGKILL = 9;
@@ -55,12 +62,20 @@ final class RuntimeNative {
 		// TODO: make the node dynamic library not depend on assumed /data/data filesystem structure
 		String modulePath = sep + "data" + sep + "data" + sep + packageName + sep + "node_modules";
 		String runtimePath = sep + "data" + sep + "data" + sep + packageName + sep + "app";
+		String serverPath = sep + "data" + sep + "data" + sep + packageName + sep + "server";
 		
 		try {
 			extractLib(ctx, runtimePath, RUNTIME_LIBRARY);
 			System.load(runtimePath + '/' + RUNTIME_LIBRARY);
 			extractLib(ctx, modulePath, BRIDGE_LIBRARY);
 			System.load(modulePath + '/' + BRIDGE_LIBRARY);
+			
+			//extracting server files
+			extractLib(ctx, serverPath, SRV_FILE_MAINJS);
+			extractLib(ctx, serverPath, SRV_FILE_ROUTERJS);
+			extractLib(ctx, serverPath, SRV_FILE_SERVERJS);
+			extractLib(ctx, serverPath, SRV_FILE_REQUESTHANDLERSJS);
+			//-------------------------
 			Log.v(TAG, "init: loaded libraries: modulePath = " + modulePath);
 			nodeInit(argv, modulePath);
 		} catch(UnsatisfiedLinkError e) {
